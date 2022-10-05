@@ -20,172 +20,170 @@ class _FirstViewState extends State<FirstView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              height: 819.h,
-              width: double.maxFinite,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color.fromRGBO(32, 127, 201, 1),
-                    kprimaryColor,
-                  ],
-                ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(43),
-                  bottomRight: Radius.circular(43),
-                ),
+      body: Column(
+        children: [
+          Container(
+            height: 819.h,
+            width: double.maxFinite,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromRGBO(32, 127, 201, 1),
+                  kprimaryColor,
+                ],
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(height: 52.h),
-                  Container(
-                    margin: EdgeInsets.only(left: 374.w),
-                    height: 27.h,
-                    width: 27.w,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(43),
+                bottomRight: Radius.circular(43),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(height: 52.h),
+                Container(
+                  margin: EdgeInsets.only(left: 374.w),
+                  height: 27.h,
+                  width: 27.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(5),
+                    color: kopacity,
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.arrow_left,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 41.h),
+                Container(
+                  width: double.maxFinite,
+                  padding: const EdgeInsets.all(0),
+                  margin: EdgeInsets.only(right: 30.w),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "اهلا بك",
+                        style: GoogleFonts.tajawal(
+                          fontSize: 34.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "في تطبيق بلدة",
+                        style: GoogleFonts.tajawal(
+                          fontSize: 34.sp,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 77.h),
+                SizedBox(
+                  height: 230.h,
+                  width: 230.w,
+                  child: Image.asset("assets/images/appicon.png"),
+                ),
+                SizedBox(height: 116.h),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const SignInView()),
+                    );
+                  },
+                  child: Container(
+                    height: 51.h,
+                    width: 320.w,
                     decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.white,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "تسجيل دخول",
+                        style: GoogleFonts.tajawal(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.normal,
+                          color: kprimaryTextColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 17.h),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, SignUpView.routeName);
+                  },
+                  child: Container(
+                    height: 51.h,
+                    width: 320.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
                       color: kopacity,
                     ),
-                    child: const Center(
-                      child: Icon(
-                        Icons.arrow_left,
-                        color: Colors.white,
+                    child: Center(
+                      child: Text(
+                        "انشاء حساب",
+                        style: GoogleFonts.tajawal(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(height: 41.h),
-                  Container(
-                    width: double.maxFinite,
-                    padding: const EdgeInsets.all(0),
-                    margin: EdgeInsets.only(right: 30.w),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "اهلا بك",
-                          style: GoogleFonts.tajawal(
-                            fontSize: 34.sp,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Text(
-                          "في تطبيق بلدة",
-                          style: GoogleFonts.tajawal(
-                            fontSize: 34.sp,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Center(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "استكشف بلدة اولا",
+                    style: GoogleFonts.tajawal(
+                      height: 2,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.normal,
+                      color: kprimaryTextColor,
                     ),
                   ),
-                  SizedBox(height: 77.h),
                   SizedBox(
-                    height: 230.h,
-                    width: 230.w,
-                    child: Image.asset("assets/images/appicon.png"),
+                    width: 16.w,
                   ),
-                  SizedBox(height: 116.h),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                const SignInView()),
-                      );
-                    },
-                    child: Container(
-                      height: 51.h,
-                      width: 320.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: Colors.white,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "تسجيل دخول",
-                          style: GoogleFonts.tajawal(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.normal,
-                            color: kprimaryTextColor,
-                          ),
-                        ),
-                      ),
+                  Container(
+                    height: 30.h,
+                    width: 30.w,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: kprimaryColor,
                     ),
-                  ),
-                  SizedBox(height: 17.h),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, SignUpView.routeName);
-                    },
-                    child: Container(
-                      height: 51.h,
-                      width: 320.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: kopacity,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "انشاء حساب",
-                          style: GoogleFonts.tajawal(
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                    child: SvgPicture.asset(
+                      'assets/icons/double_chevron.svg',
                     ),
                   ),
                 ],
               ),
             ),
-            Expanded(
-              child: Center(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "استكشف بلدة اولا",
-                      style: GoogleFonts.tajawal(
-                        height: 2,
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.normal,
-                        color: kprimaryTextColor,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 16.w,
-                    ),
-                    Container(
-                      height: 30.h,
-                      width: 30.w,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: kprimaryColor,
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/icons/double_chevron.svg',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
