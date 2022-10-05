@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "187923702014",
+    "project_id": "baldah",
+    "storage_bucket": "baldah.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187923702014:android:abf9c8dd45f57b5cd485af",
+        "android_client_info": {
+          "package_name": "com.talaltech.baldah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187923702014-lj8b97thhn5p6ljmttctrdu082cou0h2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.talaltech.baldah",
+            "certificate_hash": "6066e1aec58e536cfdbd4b1aa6727e3959079117"
+          }
+        },
+        {
+          "client_id": "187923702014-novpa2p4mmtmm4ac6cke2qpinnbv1dfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCSBjbIb9UXWdj9kp-PuTaiGokihsyix8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187923702014-novpa2p4mmtmm4ac6cke2qpinnbv1dfv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
