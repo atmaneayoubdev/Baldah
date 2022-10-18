@@ -152,20 +152,29 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, FavoriteView.routeName)
-                                .then((value) async {
-                              log("am back to home");
-                              setState(() {
-                                isLoading = true;
-                                _ads.clear();
-                                pageNbr = 0;
-                              });
-                              getAds(pageNbr).then((value) {
+                            if (Provider.of<UserProvider>(context,
+                                        listen: false)
+                                    .user
+                                    .id !=
+                                "") {
+                              Navigator.pushNamed(
+                                      context, FavoriteView.routeName)
+                                  .then((value) async {
                                 setState(() {
-                                  isLoading = false;
+                                  isLoading = true;
+                                  _ads.clear();
+                                  pageNbr = 0;
+                                });
+                                getAds(pageNbr).then((value) {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
                                 });
                               });
-                            });
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(loginSnackbar);
+                            }
                           },
                           child: Image.asset(
                             "assets/icons/heart.png",
@@ -184,8 +193,17 @@ class _HomeViewState extends State<HomeView> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(NotificationsView.routeName);
+                            if (Provider.of<UserProvider>(context,
+                                        listen: false)
+                                    .user
+                                    .id !=
+                                "") {
+                              Navigator.of(context)
+                                  .pushNamed(NotificationsView.routeName);
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(loginSnackbar);
+                            }
                           },
                           child: Image.asset(
                             "assets/icons/bell.png",
@@ -295,13 +313,21 @@ class _HomeViewState extends State<HomeView> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       GestureDetector(
                         onTap: () {
-                          showMaterialModalBottomSheet(
-                            context: context,
-                            backgroundColor: Colors.transparent,
-                            builder: (context) => const AddAdBottomSheet(),
-                          );
+                          if (Provider.of<UserProvider>(context, listen: false)
+                                  .user
+                                  .id !=
+                              "") {
+                            showMaterialModalBottomSheet(
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) => const AddAdBottomSheet(),
+                            );
+                          }
                         },
                         child: DottedBorder(
                           color: kborderColor,
@@ -385,15 +411,24 @@ class _HomeViewState extends State<HomeView> {
                       itemBuilder: (BuildContext context, int index) {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: ((context) => CategoryView(
-                                      categoryName: _categories[index].name,
-                                      categoryId: _categories[index].id,
-                                    )),
-                              ),
-                            );
+                            if (Provider.of<UserProvider>(context,
+                                        listen: false)
+                                    .user
+                                    .id !=
+                                "") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => CategoryView(
+                                        categoryName: _categories[index].name,
+                                        categoryId: _categories[index].id,
+                                      )),
+                                ),
+                              );
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(loginSnackbar);
+                            }
                           },
                           child: HomeCategoryWidget(
                             photo: _categories[index].photoPath,
@@ -436,23 +471,32 @@ class _HomeViewState extends State<HomeView> {
                         Ad ad = _ads[index];
                         return GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => DetailsView(adID: ad.id),
-                              ),
-                            ).then((value) async {
-                              setState(() {
-                                isLoading = true;
-                                _ads.clear();
-                                pageNbr = 0;
-                              });
-                              getAds(pageNbr).then((value) {
+                            if (Provider.of<UserProvider>(context,
+                                        listen: false)
+                                    .user
+                                    .id !=
+                                "") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => DetailsView(adID: ad.id),
+                                ),
+                              ).then((value) async {
                                 setState(() {
-                                  isLoading = false;
+                                  isLoading = true;
+                                  _ads.clear();
+                                  pageNbr = 0;
+                                });
+                                getAds(pageNbr).then((value) {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
                                 });
                               });
-                            });
+                            } else {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(loginSnackbar);
+                            }
                           },
                           child: HomeVerticaleWidget(
                             adId: ad.id,

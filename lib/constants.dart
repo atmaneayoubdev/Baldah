@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const baseUrl = 'http://www.baldahapp.com/api/v1/';
 
@@ -13,3 +15,11 @@ const Color klightGreynColor = Color.fromRGBO(88, 88, 88, 0.06);
 const Color kbackgroundgreyColor = Color.fromRGBO(247, 247, 247, 1);
 const Color kgreencolor = Color.fromRGBO(64, 172, 66, 1);
 const Color klightBlueColor = Color.fromRGBO(243, 247, 252, 1);
+
+SnackBar loginSnackbar = SnackBar(
+    backgroundColor: Colors.red,
+    content: Text(
+      "عليك تسجيل الدخول أولا",
+      style: GoogleFonts.tajawal(
+          fontSize: 16.sp, color: Colors.white, fontWeight: FontWeight.normal),
+    ));

@@ -33,7 +33,7 @@ class _AddingViewState extends State<AddingView> {
   TextEditingController details = TextEditingController();
   List<File> imgs = [];
   int _width = 1;
-  bool _isAccepted = false;
+  final bool _isAccepted = false;
   List<City> _cities = [];
   List<Category> _categories = [];
   List<SubCategory> _subCategories = [];
@@ -153,7 +153,7 @@ class _AddingViewState extends State<AddingView> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: Text(
-                      "$_width / 4",
+                      "$_width / 3",
                       style: GoogleFonts.tajawal(
                         fontSize: 16.sp,
                         color: Colors.white,
@@ -193,63 +193,64 @@ class _AddingViewState extends State<AddingView> {
                 ]),
               ),
               Expanded(
-                child: _width == 1
-                    ? Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 30.h, horizontal: 20.w),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع..تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عتتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع",
-                                style: GoogleFonts.tajawal(
-                                  fontSize: 16.sp,
-                                  color: kGreyColor,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                softWrap: true,
-                              ),
-                              SizedBox(
-                                height: 14.h,
-                              ),
-                              Row(
-                                children: [
-                                  Checkbox(
-                                    value: _isAccepted,
-                                    focusColor: kprimaryColor,
-                                    checkColor: Colors.white,
-                                    activeColor: kprimaryColor,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _isAccepted = value!;
-                                      });
-                                    },
-                                  ),
-                                  SizedBox(
-                                    width: 0.w,
-                                  ),
-                                  Text(
-                                    "الموافقه علي الشروط والحكام",
-                                    style: GoogleFonts.tajawal(
-                                      decoration: TextDecoration.underline,
-                                      fontSize: 16.sp,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.normal,
-                                    ),
-                                    softWrap: true,
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 100.h,
-                              ),
-                            ],
-                          ),
-                        ),
-                      )
-                    : _width == 2
+                child:
+                    //_width == 1
+                    // ? Container(
+                    //     padding: EdgeInsets.symmetric(
+                    //         vertical: 30.h, horizontal: 20.w),
+                    //     child: SingleChildScrollView(
+                    //       child: Column(
+                    //         mainAxisAlignment: MainAxisAlignment.start,
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: [
+                    //           Text(
+                    //             "تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع..تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عتتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع.تتعهد بعدم الإعلان عن أي سلعة ممنوعة بالموقع",
+                    //             style: GoogleFonts.tajawal(
+                    //               fontSize: 16.sp,
+                    //               color: kGreyColor,
+                    //               fontWeight: FontWeight.normal,
+                    //             ),
+                    //             softWrap: true,
+                    //           ),
+                    //           SizedBox(
+                    //             height: 14.h,
+                    //           ),
+                    //           Row(
+                    //             children: [
+                    //               Checkbox(
+                    //                 value: _isAccepted,
+                    //                 focusColor: kprimaryColor,
+                    //                 checkColor: Colors.white,
+                    //                 activeColor: kprimaryColor,
+                    //                 onChanged: (value) {
+                    //                   setState(() {
+                    //                     _isAccepted = value!;
+                    //                   });
+                    //                 },
+                    //               ),
+                    //               SizedBox(
+                    //                 width: 0.w,
+                    //               ),
+                    //               Text(
+                    //                 "الموافقه علي الشروط والحكام",
+                    //                 style: GoogleFonts.tajawal(
+                    //                   decoration: TextDecoration.underline,
+                    //                   fontSize: 16.sp,
+                    //                   color: Colors.black,
+                    //                   fontWeight: FontWeight.normal,
+                    //                 ),
+                    //                 softWrap: true,
+                    //               ),
+                    //             ],
+                    //           ),
+                    //           SizedBox(
+                    //             height: 100.h,
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   )
+                    _width == 1
                         ? SingleChildScrollView(
                             child: Container(
                               padding: EdgeInsets.symmetric(
@@ -308,7 +309,7 @@ class _AddingViewState extends State<AddingView> {
                               ),
                             ),
                           )
-                        : _width == 3
+                        : _width == 2
                             ? SingleChildScrollView(
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
@@ -776,19 +777,20 @@ class _AddingViewState extends State<AddingView> {
             children: [
               GestureDetector(
                   onTap: () async {
+                    // if (_width == 1) {
+                    //   if (_isAccepted) {
+                    //     setState(() {
+                    //       _width = _width + 1;
+                    //     });
+                    //   }
+                    // } else
                     if (_width == 1) {
-                      if (_isAccepted) {
-                        setState(() {
-                          _width = _width + 1;
-                        });
-                      }
-                    } else if (_width == 2) {
                       if (_selectedCategory.id != 0) {
                         setState(() {
                           _width = _width + 1;
                         });
                       }
-                    } else if (_width == 3) {
+                    } else if (_width == 2) {
                       if (_selectedSubCategory.id != 0) {
                         setState(() {
                           _width = _width + 1;
@@ -909,8 +911,8 @@ class _AddingViewState extends State<AddingView> {
                     }
                   },
                   child: LargeButtonIcon(
-                    isFinal: _width > 3 ? true : false,
-                    name: _width > 3 ? "انشاء الاعلان" : "متابعه",
+                    isFinal: _width > 2 ? true : false,
+                    name: _width > 2 ? "انشاء الاعلان" : "متابعه",
                   )),
               SizedBox(
                 height: 30.h,

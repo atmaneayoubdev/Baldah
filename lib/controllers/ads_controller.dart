@@ -66,7 +66,7 @@ class AdsController with ChangeNotifier {
       String token, int pageNumber) async {
     try {
       Dio dio = Dio();
-      dio.options.headers["Authorization"] = "Bearer $token";
+      //dio.options.headers["Authorization"] = "Bearer $token";
       var response = await dio.get(
         "${baseUrl}get_ads?page=$pageNumber",
       );

@@ -203,7 +203,7 @@ class _MainMessagesViewState extends State<MainMessagesView> {
                           );
                         } else {
                           return const Center(
-                            child: Text('No messages...'),
+                            child: Text(''),
                           );
                         }
                       }),

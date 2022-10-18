@@ -263,4 +263,23 @@ class AuthController with ChangeNotifier {
 
     return response.data['data']['message'] ?? response.statusCode;
   }
+
+  ////////////////////////////LogOut///////////////////////////
+  static Future removeAccount({required String token}) async {
+    try {
+      Dio dio = Dio();
+      dio.options.headers["Authorization"] = "Bearer $token";
+      var response = await dio.get(
+        "${baseUrl}remove_my_account",
+      );
+      log(response.data.toString());
+      debugPrint(response.statusCode.toString());
+      if (response.statusCode == 200) {
+        final prefs = await SharedPreferences.getInstance();
+        prefs.clear();
+      }
+    } on DioError catch (error) {
+      log(error.response!.data.toString());
+    }
+  }
 }

@@ -1,12 +1,12 @@
 import 'package:balda/constants.dart';
+import 'package:balda/tab_view.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'signin_view.dart';
 import 'signup_view.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class FirstView extends StatefulWidget {
   const FirstView({Key? key}) : super(key: key);
@@ -17,6 +17,13 @@ class FirstView extends StatefulWidget {
 }
 
 class _FirstViewState extends State<FirstView> {
+  bool privabyAccepted = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,22 +50,22 @@ class _FirstViewState extends State<FirstView> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(height: 52.h),
-                Container(
-                  margin: EdgeInsets.only(left: 374.w),
-                  height: 27.h,
-                  width: 27.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(5),
-                    color: kopacity,
-                  ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.arrow_left,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                // Container(
+                //   margin: EdgeInsets.only(left: 374.w),
+                //   height: 27.h,
+                //   width: 27.w,
+                //   decoration: BoxDecoration(
+                //     shape: BoxShape.rectangle,
+                //     borderRadius: BorderRadius.circular(5),
+                //     color: kopacity,
+                //   ),
+                //   child: const Center(
+                //     child: Icon(
+                //       Icons.arrow_left,
+                //       color: Colors.white,
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 41.h),
                 Container(
                   width: double.maxFinite,
@@ -151,35 +158,43 @@ class _FirstViewState extends State<FirstView> {
           ),
           Expanded(
             child: Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "استكشف بلدة اولا",
-                    style: GoogleFonts.tajawal(
-                      height: 2,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.normal,
-                      color: kprimaryTextColor,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => const TabView())));
+                },
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "استكشف بلدة اولا",
+                      style: GoogleFonts.tajawal(
+                        height: 2,
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.normal,
+                        color: kprimaryTextColor,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 16.w,
-                  ),
-                  Container(
-                    height: 30.h,
-                    width: 30.w,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: kprimaryColor,
+                    SizedBox(
+                      width: 16.w,
                     ),
-                    child: SvgPicture.asset(
-                      'assets/icons/double_chevron.svg',
+                    Container(
+                      height: 30.h,
+                      width: 30.w,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: kprimaryColor,
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/icons/double_chevron.svg',
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

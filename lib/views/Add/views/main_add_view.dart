@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import '../../../helpers/user_provider.dart';
 
 class MainAddView extends StatefulWidget {
   const MainAddView({Key? key}) : super(key: key);
@@ -24,9 +26,12 @@ class _MainAddViewState extends State<MainAddView> {
           ? const SizedBox()
           : FloatingActionButton(
               onPressed: () {
-                setState(() {
-                  Navigator.of(context).pushNamed(AddingView.routeName);
-                });
+                if (Provider.of<UserProvider>(context, listen: false).user.id !=
+                    "") {
+                  Navigator.pushNamed(context, AddingView.routeName);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(loginSnackbar);
+                }
               },
               focusColor: kprimaryColor,
               splashColor: kprimaryColor,
@@ -59,8 +64,17 @@ class _MainAddViewState extends State<MainAddView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () =>
-                        Navigator.pushNamed(context, FavoriteView.routeName),
+                    onTap: () {
+                      if (Provider.of<UserProvider>(context, listen: false)
+                              .user
+                              .id !=
+                          "") {
+                        Navigator.pushNamed(context, FavoriteView.routeName);
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(loginSnackbar);
+                      }
+                    },
                     child: Image.asset(
                       "assets/icons/heart.png",
                       height: 20.h,
@@ -78,7 +92,16 @@ class _MainAddViewState extends State<MainAddView> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, NotificationsView.routeName);
+                      if (Provider.of<UserProvider>(context, listen: false)
+                              .user
+                              .id !=
+                          "") {
+                        Navigator.pushNamed(
+                            context, NotificationsView.routeName);
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(loginSnackbar);
+                      }
                     },
                     child: Image.asset(
                       "assets/icons/bell.png",

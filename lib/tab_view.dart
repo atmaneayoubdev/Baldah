@@ -1,4 +1,5 @@
 import 'package:balda/constants.dart';
+import 'package:balda/helpers/user_provider.dart';
 import 'package:balda/views/Add/views/main_add_view.dart';
 import 'package:balda/views/Home/views/home_view.dart';
 import 'package:balda/views/advertisments/views/ads_main_view.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TabView extends StatefulWidget {
   const TabView({Key? key}) : super(key: key);
@@ -72,9 +74,13 @@ class _TabViewState extends State<TabView> {
   buildNavBarItem(String icon, int index) {
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _selectedIndex = index;
-        });
+        if (Provider.of<UserProvider>(context, listen: false).user.id == "" &&
+            (index == 1 || index == 3)) {
+        } else {
+          setState(() {
+            _selectedIndex = index;
+          });
+        }
       },
       child: Container(
         height: 75.h,

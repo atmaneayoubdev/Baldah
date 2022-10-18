@@ -37,6 +37,13 @@ class _MainSettingsViewState extends State<MainSettingsView> {
 
   @override
   void initState() {
+    if (Provider.of<UserProvider>(context, listen: false).user.id == "") {
+      setState(() {
+        first_view = false;
+        second_view = false;
+        third_view = true;
+      });
+    }
     super.initState();
     Future.delayed(Duration.zero, () async {
       await PublicContoller.getBanks().then((value) {
@@ -74,7 +81,7 @@ class _MainSettingsViewState extends State<MainSettingsView> {
             ),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
@@ -87,16 +94,18 @@ class _MainSettingsViewState extends State<MainSettingsView> {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(300),
-                  child: CachedNetworkImage(
-                    imageUrl: Provider.of<UserProvider>(context, listen: true)
-                        .user
-                        .photo,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) => SvgPicture.asset(
-                      "assets/icons/contact_placeholder.svg",
-                    ),
-                    errorWidget: (context, url, error) => SvgPicture.asset(
-                      "assets/icons/contact_placeholder.svg",
+                  child: Center(
+                    child: CachedNetworkImage(
+                      imageUrl: Provider.of<UserProvider>(context, listen: true)
+                          .user
+                          .photo,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => SvgPicture.asset(
+                        "assets/icons/contact_placeholder.svg",
+                      ),
+                      errorWidget: (context, url, error) => SvgPicture.asset(
+                        "assets/icons/contact_placeholder.svg",
+                      ),
                     ),
                   ),
                 ),
@@ -112,6 +121,9 @@ class _MainSettingsViewState extends State<MainSettingsView> {
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
                 ),
+              ),
+              SizedBox(
+                height: 15.h,
               ),
             ],
           ),
@@ -130,11 +142,19 @@ class _MainSettingsViewState extends State<MainSettingsView> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        first_view = true;
-                        second_view = false;
-                        third_view = false;
-                      });
+                      if (Provider.of<UserProvider>(context, listen: false)
+                              .user
+                              .id !=
+                          "") {
+                        setState(() {
+                          first_view = true;
+                          second_view = false;
+                          third_view = false;
+                        });
+                      } else {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(loginSnackbar);
+                      }
                     },
                     child: Container(
                       height: 32.h,
@@ -157,11 +177,17 @@ class _MainSettingsViewState extends State<MainSettingsView> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        first_view = false;
-                        second_view = true;
-                        third_view = false;
-                      });
+                      if (Provider.of<UserProvider>(context, listen: false)
+                              .user
+                              .id !=
+                          "") {
+                        setState(() {
+                          first_view = false;
+                          second_view = true;
+                          third_view = false;
+                        });
+                      }
+                      ScaffoldMessenger.of(context).showSnackBar(loginSnackbar);
                     },
                     child: Container(
                       height: 32.h,

@@ -92,113 +92,115 @@ class _HomeVerticaleWidgetState extends State<HomeVerticaleWidget> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 31.h,
-                        width: 31.w,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                        alignment: Alignment.topLeft,
-                        child: InkWell(
-                          onTap: () async {
-                            if (!isloading) {
-                              setState(() {
-                                isloading = true;
-                              });
-                              if (!isfav) {
-                                await AdsController.addFavorite(
-                                  widget.adId,
-                                  Provider.of<UserProvider>(
-                                    context,
-                                    listen: false,
-                                  ).user.apiToken,
-                                ).then((value) {
-                                  if (value ==
-                                          "تم أضافه الاعلان الي المفضلة بنجاح" ||
-                                      value ==
-                                          "هذا الأعلان في المفضلة لديك بالفعل") {
+                Provider.of<UserProvider>(context, listen: false).user.id == ""
+                    ? const SizedBox()
+                    : Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 31.h,
+                              width: 31.w,
+                              decoration: const BoxDecoration(
+                                color: Colors.white,
+                                shape: BoxShape.circle,
+                              ),
+                              alignment: Alignment.topLeft,
+                              child: InkWell(
+                                onTap: () async {
+                                  if (!isloading) {
                                     setState(() {
-                                      isfav = true;
-                                      isloading = false;
+                                      isloading = true;
                                     });
+                                    if (!isfav) {
+                                      await AdsController.addFavorite(
+                                        widget.adId,
+                                        Provider.of<UserProvider>(
+                                          context,
+                                          listen: false,
+                                        ).user.apiToken,
+                                      ).then((value) {
+                                        if (value ==
+                                                "تم أضافه الاعلان الي المفضلة بنجاح" ||
+                                            value ==
+                                                "هذا الأعلان في المفضلة لديك بالفعل") {
+                                          setState(() {
+                                            isfav = true;
+                                            isloading = false;
+                                          });
+                                        }
+                                        setState(() {
+                                          isloading = false;
+                                        });
+                                      });
+                                    } else {
+                                      await AdsController.removeFavorite(
+                                        widget.adId,
+                                        Provider.of<UserProvider>(
+                                          context,
+                                          listen: false,
+                                        ).user.apiToken,
+                                      ).then((value) {
+                                        if (value ==
+                                                "تم أزالة الاعلان من المفضلة بنجاح" ||
+                                            value ==
+                                                "هذا الأعلان غير موجود في المفضلة لديك ") {
+                                          setState(() {
+                                            isfav = false;
+                                            isloading = false;
+                                          });
+                                        }
+                                        setState(() {
+                                          isloading = false;
+                                        });
+                                      });
+                                    }
                                   }
-                                  setState(() {
-                                    isloading = false;
-                                  });
-                                });
-                              } else {
-                                await AdsController.removeFavorite(
-                                  widget.adId,
-                                  Provider.of<UserProvider>(
-                                    context,
-                                    listen: false,
-                                  ).user.apiToken,
-                                ).then((value) {
-                                  if (value ==
-                                          "تم أزالة الاعلان من المفضلة بنجاح" ||
-                                      value ==
-                                          "هذا الأعلان غير موجود في المفضلة لديك ") {
-                                    setState(() {
-                                      isfav = false;
-                                      isloading = false;
-                                    });
-                                  }
-                                  setState(() {
-                                    isloading = false;
-                                  });
-                                });
-                              }
-                            }
-                          },
-                          child: Center(
-                            child: isloading
-                                ? const FittedBox(
-                                    child: CircularProgressIndicator(
-                                      color: Colors.red,
-                                    ),
-                                  )
-                                : Icon(
-                                    isfav
-                                        ? Icons.favorite
-                                        : Icons.favorite_outline,
-                                    color: Colors.red,
-                                    size: 20.h,
-                                  ),
-                          ),
+                                },
+                                child: Center(
+                                  child: isloading
+                                      ? const FittedBox(
+                                          child: CircularProgressIndicator(
+                                            color: Colors.red,
+                                          ),
+                                        )
+                                      : Icon(
+                                          isfav
+                                              ? Icons.favorite
+                                              : Icons.favorite_outline,
+                                          color: Colors.red,
+                                          size: 20.h,
+                                        ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 14.h,
+                            ),
+                            // Container(
+                            //   height: 31.h,
+                            //   width: 31.w,
+                            //   decoration: const BoxDecoration(
+                            //       color: Colors.white, shape: BoxShape.circle),
+                            //   alignment: Alignment.topLeft,
+                            //   child: InkWell(
+                            //     onTap: () {
+                            //       setState(() {});
+                            //     },
+                            //     child: Center(
+                            //       child: Icon(
+                            //         widget.isFavorite
+                            //             ? Icons.star
+                            //             : Icons.star_outline,
+                            //         color: Colors.amber,
+                            //         size: 20.h,
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                          ],
                         ),
                       ),
-                      SizedBox(
-                        height: 14.h,
-                      ),
-                      // Container(
-                      //   height: 31.h,
-                      //   width: 31.w,
-                      //   decoration: const BoxDecoration(
-                      //       color: Colors.white, shape: BoxShape.circle),
-                      //   alignment: Alignment.topLeft,
-                      //   child: InkWell(
-                      //     onTap: () {
-                      //       setState(() {});
-                      //     },
-                      //     child: Center(
-                      //       child: Icon(
-                      //         widget.isFavorite
-                      //             ? Icons.star
-                      //             : Icons.star_outline,
-                      //         color: Colors.amber,
-                      //         size: 20.h,
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
               ],
             ),
           ),

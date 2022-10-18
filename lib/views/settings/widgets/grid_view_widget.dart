@@ -33,6 +33,9 @@ class GridViewWidget extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(
+              height: 5.h,
+            ),
             FittedBox(
               child: Text(
                 name,

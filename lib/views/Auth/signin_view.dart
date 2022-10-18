@@ -190,14 +190,14 @@ class _SignInViewState extends State<SignInView> {
                       SizedBox(
                         height: 10.h,
                       ),
-                      Text(
-                        "نسيت كلمه المرور ؟",
-                        style: GoogleFonts.tajawal(
-                          fontSize: 16.sp,
-                          color: Colors.black,
-                          height: 1,
-                        ),
-                      ),
+                      // Text(
+                      //   "نسيت كلمه المرور ؟",
+                      //   style: GoogleFonts.tajawal(
+                      //     fontSize: 16.sp,
+                      //     color: Colors.black,
+                      //     height: 1,
+                      //   ),
+                      // ),
                       SizedBox(
                         height: 34.h,
                       ),
